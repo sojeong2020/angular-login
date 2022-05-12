@@ -1,0 +1,23 @@
+<form (ngSubmit)="submitForm()" [formGroup]="form">
+    <div class="form">
+      <mat-card class="form-container">
+        <mat-card-title class="form-title">Register</mat-card-title>
+  
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              formControlName="email"
+              required
+            />
+          </mat-form-field>
+        </div>
+
+        <div>
+          <button type="submit" mat-raised-button color="primary" [disabled]="this.form.invalid">Submit</button>
+        </div>
+      </mat-card>
+    </div>
+  </form>

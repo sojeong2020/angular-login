@@ -1,0 +1,13 @@
+.form-container {
+    max-width: 800px;
+    min-width: 250px;
+
+}
+.form{
+    display: flex; 
+    justify-content:center;
+    margin-top: 100px;
+}
+.form-title{
+    margin-bottom: 40px;
+}
