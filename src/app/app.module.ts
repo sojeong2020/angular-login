@@ -14,7 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
 import { SingleUserComponent } from './single-user/single-user.component';
-import { IndexComponent } from './index/index.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { EventComponent } from './event/event.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { IndexComponent } from './index/index.component';
     ProfileComponent,
     UsersComponent,
     SingleUserComponent,
-    IndexComponent
+    CalendarComponent,
+    EventComponent,
   ],
   imports: [
     BrowserModule,
