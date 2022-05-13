@@ -17,4 +17,8 @@ export class AppComponent {
     });
   }
 
+  isAuthenticated(){
+    return true
+  }
+
 }
