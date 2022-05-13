@@ -1,19 +1,34 @@
-
 <mat-toolbar color="primary">
-  <a mat-button routerLink="home">home</a>
-
-  <a mat-button routerLink="about">About us</a>
-  <a mat-button routerLink="contact">Contact</a>
-
-  <div>
-    <a mat-button routerLink="vol/calendar">Calendar</a>
-    <a mat-button routerLink="vol/event">Events</a>
-    <a mat-button routerLink="home">Logout</a>
-  </div>
+  <button mat-icon-button>
+    <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+  </button>
+    <span class="menu-spacer"></span>
+    <div>
+      <a mat-button [routerLink]="'/home'"> Home </a>
+      <a mat-button [routerLink]="'/about'"> About </a>
+      <a mat-button [routerLink]="'/contact'"> Contact </a>
+      <a mat-button [routerLink]="'vol/calendar'"> Calendar </a>
+      <a mat-button [routerLink]="'vol/event'"> Events </a>
+      <a mat-button [routerLink]="'vol/login'"> Logout </a>
+    </div>
 </mat-toolbar>
 
+<mat-sidenav-container class="container">
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+      <a mat-list-item [routerLink]="'vol/dashboard'"> Dashboard </a>
+      <a mat-list-item [routerLink]="'vol/profile'"> Profile </a>
+      <a mat-list-item [routerLink]="'vol/users'"> Users </a>
+      <a mat-list-item [routerLink]="'vol/event'"> Events </a>
+    </mat-nav-list>
+  </mat-sidenav>
 
-<div>
-  <router-outlet>
-  </router-outlet>
-</div>
+  <mat-sidenav-content>
+    <div  class="content">
+    <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+
+  <mat-toolbar class="footer">Footer</mat-toolbar>
+
+</mat-sidenav-container>

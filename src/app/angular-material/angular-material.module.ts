@@ -3,6 +3,11 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+
 // Imports of used components
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -23,6 +28,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatMenuModule,
     MatTableModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule
   ],
   exports: [
     MatInputModule,
@@ -32,6 +40,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatIconModule,
     MatMenuModule,
     MatTableModule,
+    MatSidenavModule,
+    MatDividerModule,
+    MatListModule
   ],
 })
 export class AngularMaterialModule {}
