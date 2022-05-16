@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { HttpClientModule } from '@angular/common/http';
+
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
@@ -32,8 +35,15 @@ import { EventComponent } from './event/event.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     AngularMaterialModule,
-    AuthModule
+    AuthModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+             return     localStorage.getItem('access_token');},
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

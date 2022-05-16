@@ -11,8 +11,9 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth.guard';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -36,7 +37,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     AngularMaterialModule,
+    FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
     
   ],
   exports: [RouterModule],

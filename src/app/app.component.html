@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isAuthenticated()">
+<ng-container *ngIf="!isLoggedIn">
 <mat-toolbar color="primary">
   <span class="menu-spacer"></span>
     <div>
@@ -12,7 +12,7 @@
 </div>
 </ng-container>
 
-<ng-container *ngIf="isAuthenticated()">
+<ng-container *ngIf="isLoggedIn">
 <mat-toolbar color="primary">
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
@@ -23,7 +23,7 @@
       <a mat-button [routerLink]="'/contact'"> Contact </a>
       <a mat-button [routerLink]="'vol/calendar'"> Calendar </a>
       <a mat-button [routerLink]="'vol/event'"> Events </a>
-      <a mat-button [routerLink]="'auth/login'"> Logout </a>
+      <a mat-button (click)="logout()"> Logout </a>
     </div>
 </mat-toolbar>
 
