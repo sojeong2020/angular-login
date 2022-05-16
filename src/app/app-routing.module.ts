@@ -11,16 +11,18 @@ import { SingleUserComponent } from './single-user/single-user.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { EventComponent } from './event/event.component';
 
+import { AuthGuard } from './auth/auth.guard';
+
 const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
-    { path: 'vol/dashboard', component: DashboardComponent },
-    { path: 'vol/calendar', component: CalendarComponent  },
-    { path: 'vol/event', component: EventComponent },
-    { path: 'vol/profile', component: ProfileComponent  },
-    { path: 'vol/users', component: UsersComponent  },
-    { path: 'vol/users/:id', component: SingleUserComponent },
+    { path: 'vol/dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'vol/calendar', component: CalendarComponent, canActivate: [AuthGuard]  },
+    { path: 'vol/event', component: EventComponent, canActivate: [AuthGuard] },
+    { path: 'vol/profile', component: ProfileComponent, canActivate: [AuthGuard]  },
+    { path: 'vol/users', component: UsersComponent, canActivate: [AuthGuard]  },
+    { path: 'vol/users/:id', component: SingleUserComponent, canActivate: [AuthGuard] },
     { path: '', redirectTo: 'about', pathMatch: 'full' }
 
 ];
