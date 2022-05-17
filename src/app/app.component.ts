@@ -30,7 +30,6 @@ constructor(fb: FormBuilder,
     this.isLoggedIn = !!this.authService.getToken();
     if (this.isLoggedIn) {
       const user = this.authService.getUser();
-     
       this.username = user.username;
     }
   }

@@ -9,11 +9,24 @@ import { LoginComponent } from './login/login.component';
 
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
 
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
+export function getAuthScheme(request: any) {
+  return "Bearer ";
+}
+export function jwtOptionsFactory() {
+  return {
+    tokenGetter,
+    authScheme: getAuthScheme,
+  };
+}
 
 const routes: Routes = [
   {
@@ -39,10 +52,17 @@ const routes: Routes = [
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+      },
+    }),
+   
     
   ],
   exports: [RouterModule],
-  providers: [AuthService, AuthGuard]
+  providers: [AuthService]
 })
 export class AuthModule { }

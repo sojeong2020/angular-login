@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+//import { DataService } from '../auth/data.service';
+import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
 
-  constructor() { }
+  content? : any;
+
+  constructor(private authService: AuthService) {
+    
+   }
 
   ngOnInit(): void {
+    this.authService.fetchUsers().subscribe( result=>{
+      console.log(result,"<<<<result of users!!!")
+      this.content = result
+    })
   }
 
 }
