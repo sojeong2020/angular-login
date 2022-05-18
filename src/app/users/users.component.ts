@@ -15,10 +15,10 @@ export class UsersComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.authService.fetchUsers().subscribe( result=>{
+    /* this.authService.fetchUsers().subscribe( result=>{
       console.log(result,"<<<<result of users!!!")
       this.content = result
-    })
+    }) */
   }
 
 }

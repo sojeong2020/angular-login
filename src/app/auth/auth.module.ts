@@ -53,6 +53,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    
     JwtModule.forRoot({
       jwtOptionsProvider: {
         provide: JWT_OPTIONS,

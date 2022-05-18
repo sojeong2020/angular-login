@@ -12,8 +12,7 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   options: FormGroup;
-
-  isLoggedIn = false;
+  isLoggedin = false
   username?: string;
 
 constructor(fb: FormBuilder,
@@ -27,12 +26,20 @@ constructor(fb: FormBuilder,
   }
 
   ngOnInit(): void {
-    this.isLoggedIn = !!this.authService.getToken();
-    if (this.isLoggedIn) {
+     this.isLoggedin = this.authService.isLoggedIn()
+    console.log(this.isLoggedin,"<<<<isloggedin from app")
+    if (this.isLoggedin) {
       const user = this.authService.getUser();
+      console.log(user,"user!!")
+
       this.username = user.username;
-    }
+    } 
   }
+  /* isLoggedIn(){
+    this.isLoggedin = this.authService.isLoggedIn()
+    console.log(this.isLoggedin,"<<<<isloggedin from app")
+
+  } */
 
   
   logout(): void {

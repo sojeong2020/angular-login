@@ -1,4 +1,4 @@
-<ng-container *ngIf="!isLoggedIn">
+<ng-container *ngIf="!authService.isLoggedIn()">
 <mat-toolbar color="primary">
   <span class="menu-spacer"></span>
     <div>
@@ -12,7 +12,7 @@
 </div>
 </ng-container>
 
-<ng-container *ngIf="isLoggedIn">
+<ng-container *ngIf="authService.isLoggedIn()">
 <mat-toolbar color="primary">
   <button mat-icon-button>
     <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
