@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Router } from '@angular/router';
+
 //import * as moment from 'moment'; //time management
 
 const AUTH_API = 'https://jwt.teamkinetic.co.uk/users';
@@ -27,7 +29,10 @@ export class AuthService {
   private USER_KEY = 'auth-user';
   private AUTH_META = 'auth-meta';
 
-  constructor(private http: HttpClient) {
+  
+
+  constructor(private http: HttpClient,
+              private router: Router) {
 
   this.decodedToken = JSON.parse(localStorage.getItem(this.AUTH_META)!) || new DecodedToken();
 
@@ -86,16 +91,24 @@ public logout() {
  this.decodedToken = new DecodedToken();
 }
 
-public isLoggedIn(): boolean{
+public isLoggedIn(): any{
 
   const token: string | null = localStorage.getItem(this.TOKEN_KEY);
   
   if (token && !this.helper.isTokenExpired(token)) {
 
- return true;
+  return true;
   }
-  else {
-    return false;
+  else if (token && this.helper.isTokenExpired(token)){
+
+     this.logout()
+     this.router.navigateByUrl('/auth/login')
+    .then(()=>{
+      window.location.reload();
+    }) 
+  }
+  else{
+    return false
   }
 }
   // first done- return localStorage.getItem(this.TOKEN_KEY) !==  null;
@@ -103,8 +116,6 @@ public isLoggedIn(): boolean{
   /* second done - moment() library is used - console.log(this.decodedToken.exp,"<<<<this.decodedtoken exp!!")
   return moment().isBefore(moment.unix(this.decodedToken.exp));  */
   
- 
-
 }
 
 
