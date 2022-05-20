@@ -18,15 +18,16 @@ class DecodedToken {
   providedIn: 'root'
 })
 export class AuthService {  
+
   helper = new JwtHelperService();
+
+  decodedToken: any
 
   private TOKEN_KEY = 'access_token';
   private USER_KEY = 'auth-user';
   private AUTH_META = 'auth-meta';
 
-   decodedToken: any
-
-constructor(private http: HttpClient) {
+  constructor(private http: HttpClient) {
 
   this.decodedToken = JSON.parse(localStorage.getItem(this.AUTH_META)!) || new DecodedToken();
 
@@ -102,11 +103,8 @@ public isLoggedIn(): boolean{
   /* second done - moment() library is used - console.log(this.decodedToken.exp,"<<<<this.decodedtoken exp!!")
   return moment().isBefore(moment.unix(this.decodedToken.exp));  */
   
-  fetchUsers(): Observable<any>{
-    return this.http.get(AUTH_API);
-  }
+ 
 
-  
 }
 
 
