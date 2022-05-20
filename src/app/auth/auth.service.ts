@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -90,16 +90,23 @@ public isLoggedIn(): boolean{
   const token: string | null = localStorage.getItem(this.TOKEN_KEY);
   
   if (token && !this.helper.isTokenExpired(token)) {
-    return true;
+
+ return true;
   }
   else {
     return false;
   }
 }
-  // 1- return localStorage.getItem(this.TOKEN_KEY) !==  null;
+  // first done- return localStorage.getItem(this.TOKEN_KEY) !==  null;
 
-  /* 2- moment() library is used - console.log(this.decodedToken.exp,"<<<<this.decodedtoken exp!!")
+  /* second done - moment() library is used - console.log(this.decodedToken.exp,"<<<<this.decodedtoken exp!!")
   return moment().isBefore(moment.unix(this.decodedToken.exp));  */
+  
+  fetchUsers(): Observable<any>{
+    return this.http.get(AUTH_API);
+  }
+
+  
 }
 
 

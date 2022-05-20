@@ -11,14 +11,15 @@ export class UsersComponent implements OnInit {
   content? : any;
 
   constructor(private authService: AuthService) {
-    
-   }
 
-  ngOnInit(): void {
-    /* this.authService.fetchUsers().subscribe( result=>{
+    this.authService.fetchUsers().subscribe( result=>{
       console.log(result,"<<<<result of users!!!")
       this.content = result
-    }) */
+    }) 
+   }
+
+  ngOnInit() {
+       
   }
 
 }

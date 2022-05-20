@@ -12,21 +12,8 @@ import { AuthService } from './auth.service';
 
 import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { HttpClientModule } from '@angular/common/http';
-import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
-
-export function tokenGetter() {
-  return localStorage.getItem('access_token');
-}
-export function getAuthScheme(request: any) {
-  return "Bearer ";
-}
-export function jwtOptionsFactory() {
-  return {
-    tokenGetter,
-    authScheme: getAuthScheme,
-  };
-}
+//import { HttpClientModule } from '@angular/common/http';
+//import { JwtModule } from '@auth0/angular-jwt';
 
 const routes: Routes = [
   {
@@ -34,7 +21,7 @@ const routes: Routes = [
     component: AuthComponent,
     children: [
       { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
+      { path: 'register', component: RegisterComponent  }
     ]
   }
 ];
@@ -52,18 +39,24 @@ const routes: Routes = [
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    
-    JwtModule.forRoot({
-      jwtOptionsProvider: {
-        provide: JWT_OPTIONS,
-        useFactory: jwtOptionsFactory,
+
+   /*  HttpClientModule,
+     JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+          return     localStorage.getItem('access_token');},
+        allowedDomains: ["jwt.teamkinetic.co.uk"],
+        disallowedRoutes: ["jwt.teamkinetic.co.uk/examplebadroute/"],
+        headerName: "Authorization",
+        authScheme: "Bearer ",
+        //throwNoTokenError: true,
+        //skipWhenExpired: true,
+
       },
-    }),
-   
-    
+    }),    */
+
   ],
+  providers: [AuthService],
   exports: [RouterModule],
-  providers: [AuthService]
 })
 export class AuthModule { }
