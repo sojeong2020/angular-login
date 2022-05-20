@@ -1,1 +1,14 @@
-<p>users works!</p>
+<h1>users!</h1>
+
+<ul>
+    <li *ngFor = "let user of content">
+      <a routerLink="/vol/users/{{user.id}}">
+      <p>ID>>  {{user.id}}</p>
+      </a>
+      <p>FirstName >> {{user.firstName}}</p>
+      <p>LasstName >> {{user.lastName}}</p>
+      <p>Username >> {{user.username}}</p>
+      <p>Level >> {{user.level}}</p>
+
+    </li>
+</ul>

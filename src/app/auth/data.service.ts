@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
-const AUTH_API = 'https://jwt.teamkinetic.co.uk/users';
+const  API_URL = 'https://jwt.teamkinetic.co.uk/users';
 
 
 @Injectable({
@@ -15,6 +15,10 @@ export class DataService {
 
   
   fetchUsers(): Observable<any>{
-    return this.http.get(AUTH_API);
+    return this.http.get( API_URL);
+  }
+
+  fetchUser(id: any):Observable<any>{
+    return this.http.get( API_URL + `/${id}`);
   }
 }
