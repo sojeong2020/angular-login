@@ -13,7 +13,7 @@ export class AuthComponent implements OnInit {
   }
 
   ping() {
-    this.http.get("https://jwt.teamkinetic.co.uk/users").subscribe(
+    this.http.get("https://jwt.spark.co.uk/users").subscribe(
       (data) => console.log(data),
       (err) => console.log(err)
     );
