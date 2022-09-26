@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 //import * as moment from 'moment'; //time management
 
-const AUTH_API = 'https://jwt.teamkinetic.co.uk/users';
+const AUTH_API = 'https://jwt.spark.co.uk/users';
 
 class DecodedToken {
   'exp': number;
