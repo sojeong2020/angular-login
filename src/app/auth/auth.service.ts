@@ -81,6 +81,7 @@ public getUser(): any {
    return JSON.parse(user);
   }
   return {};
+
 }
 
 public logout() {
